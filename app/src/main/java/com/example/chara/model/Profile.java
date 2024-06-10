@@ -1,12 +1,28 @@
 package com.example.chara.model;
 
 public class Profile {
-    private String firstName;
-    private String lastName;
-    private String birthDate;
-    private byte[] avatar;
+    private String login;
+    private String password;
 
-    // Getters and setters
+    private String firstName;
+
+    private String lastName;
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -22,21 +38,5 @@ public class Profile {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public byte[] getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(byte[] avatar) {
-        this.avatar = avatar;
     }
 }

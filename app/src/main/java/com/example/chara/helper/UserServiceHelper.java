@@ -1,5 +1,8 @@
 package com.example.chara.helper;
 
+import com.example.chara.model.Profile;
+import com.example.chara.model.Resume;
+
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
@@ -21,11 +24,26 @@ public class UserServiceHelper {
         return "Basic " + encoder.encodeToString(restParams.getBytes(StandardCharsets.UTF_8));
     }
 
-    public static String userParams() {
+    public static String userParams(String login, String password) {
+        if (login != null && !login.isEmpty() &&
+            password != null && !password.isEmpty()){
+            return String
+                    .format("grant_type=password&username=%s&password=%s",
+                            login,
+                            password);
+        }
         return String
                 .format("grant_type=password&username=%s&password=%s",
                         USER_LOGIN,
                         USER_PASSWORD);
     }
 
+    public void createdUser(){
+
+    }
+    private void createUser(Profile profile) {
+        LoadHelper loadHelper = new LoadHelper(this, "createUser", Profile.class);
+
+        loadHelper.loadData(userService.deleteResume(profile));
+    }
 }
