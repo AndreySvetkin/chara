@@ -41,7 +41,6 @@ import retrofit2.Retrofit;
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
 
     private List<Depart> departs;
 
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-
+        setContentView(R.layout.activity_main);
         if (UserServiceHelper.ACCESS_TOKEN == null){
             initSession();
         }
@@ -80,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
             finish();
             return;
         }
-        setContentView(R.layout.activity_main);
         CardView openVacanciesButton = findViewById(R.id.cardVacancies);
         CardView openInterviewButton = findViewById(R.id.cardInterviews);
         CardView openSeekersButton = findViewById(R.id.cardSeekers);
@@ -126,32 +124,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-
-
-
-
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        switch (item.getTitle().toString()) {
-                            case "Личный кабинет": // nav_profile
-                                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-                                startActivity(intent);
-                                break;
-                            case "Выход":
-                                logoutUser();
-                        }
-
-                        return false;
-                    }
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getTitle().toString()) {
+                    case "Личный кабинет":
+                        Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                        startActivity(intent);
+                        break;
+                    case "Выход":
+                        logoutUser();
                 }
-        );
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.commit();
+                return false;
+            }
+        });
+
     }
 
     private void logoutUser() {

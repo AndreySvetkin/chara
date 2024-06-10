@@ -17,7 +17,7 @@
             android:layout_width="128dp"
             android:layout_height="127dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="140dp"
             android:layout_marginTop="8dp"
             android:src="@drawable/default_avatar_background" />
 
@@ -93,41 +93,6 @@
         android:textColor="#000000"
         android:textSize="16sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <EditText
-            android:id="@+id/birthDateEditText"
-            android:layout_width="177dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:background="@android:drawable/edit_text"
-            android:enabled="false"
-            android:fontFamily="@font/aldrich"
-            android:hint="Дата рождения"
-            android:textColor="#000000"
-            android:textSize="16sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_select_dob"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="0dp"
-            android:background="@android:drawable/btn_default"
-            android:backgroundTint="#FF7C00"
-            android:backgroundTintMode="multiply"
-            android:fontFamily="@font/aldrich"
-            android:text="Выбрать дату рождения"
-            android:textColor="#FFFFFF"
-            android:textFontWeight="700"
-            android:textSize="14sp"
-            android:visibility="gone" />
-    </LinearLayout>
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/editButton"
         android:layout_width="wrap_content"
@@ -139,69 +104,6 @@
         android:backgroundTintMode="multiply"
         android:fontFamily="@font/aldrich"
         android:text="Изменить"
-        android:textColor="#FFFFFF"
-        android:textFontWeight="700"
-        android:textSize="16sp" />
-
-    <LinearLayout
-        android:id="@+id/changePasswordLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <EditText
-            android:id="@+id/currentPasswordEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:background="@android:drawable/edit_text"
-            android:fontFamily="@font/aldrich"
-            android:hint="Текущий пароль"
-            android:textColor="#000000"
-            android:textSize="16sp" />
-
-        <EditText
-            android:id="@+id/newPasswordEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="8dp"
-            android:background="@android:drawable/edit_text"
-            android:fontFamily="@font/aldrich"
-            android:hint="Новый пароль"
-            android:textColor="#000000"
-            android:textSize="16sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/confirmPasswordButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:background="@android:drawable/btn_default"
-            android:backgroundTint="#FF7C00"
-            android:backgroundTintMode="multiply"
-            android:fontFamily="@font/aldrich"
-            android:text="Подтвердить"
-            android:textColor="#FFFFFF"
-            android:textFontWeight="700"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/changePasswordButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:background="@android:drawable/btn_default"
-        android:backgroundTint="#FF7C00"
-        android:backgroundTintMode="multiply"
-        android:fontFamily="@font/aldrich"
-        android:text="Изменить пароль"
         android:textColor="#FFFFFF"
         android:textFontWeight="700"
         android:textSize="16sp" />

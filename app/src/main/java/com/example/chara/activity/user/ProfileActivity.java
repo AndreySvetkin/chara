@@ -4,7 +4,6 @@ import static com.example.chara.DatabaseManager.checkPassword;
 import static com.example.chara.DatabaseManager.updatePassword;
 import static com.example.chara.DatabaseManager.updateUserProfile;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -41,7 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_profile);
+        setContentView(R.layout.activity_profile);
 
         avatarImageView = findViewById(R.id.avatarImageView);
         EditText firstNameEditText = findViewById(R.id.firstNameEditText);
