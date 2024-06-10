@@ -24,6 +24,14 @@ public class Interview implements Serializable {
         this.interviewer = interviewer;
     }
 
+    public Interview(Date date, Resume resume, Employee interviewer)
+    {
+        this.date = date;
+        this.resume = resume;
+        this.interviewer = interviewer;
+        this.vacancy = resume.getVacancy();
+    }
+
     public String getId() {
         return id;
     }

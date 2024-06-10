@@ -16,7 +16,12 @@ import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.chara.config.AppConfig;
+import com.example.chara.helper.LoadHelper;
+import com.example.chara.model.Employee;
+import com.example.chara.model.Interview;
 import com.example.chara.model.Resume;
+import com.example.chara.service.InterviewService;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
@@ -25,6 +30,8 @@ import android.widget.DatePicker;
 import java.util.Calendar;
 import java.util.Date;
 
+import retrofit2.Retrofit;
+
 public class SeekerProfile extends AppCompatActivity {
 
     private TextView titleTextView, fioTextView, birthDateTextView, maritalStatusTextView, phoneTextView, emailTextView;
@@ -32,6 +39,10 @@ public class SeekerProfile extends AppCompatActivity {
     private ImageView photoImageView;
     private ImageButton btnInterview;
     private Calendar selectedDateTime = Calendar.getInstance();
+
+    private Retrofit retrofit = AppConfig.getRetrofitInstance();
+
+    private InterviewService InterviewService = retrofit.create(InterviewService.class);
     private Resume seeker;
 
     @Override
@@ -158,6 +169,15 @@ public class SeekerProfile extends AppCompatActivity {
 
     private void sendInvite(Calendar dateTime, Resume seeker) {
         // Логика для отправки приглашения, например, отправка по email или push-уведомлению
+        addInterview(new Interview(dateTime.getTime(), seeker, null));
         Toast.makeText(this, "Приглашение на собеседование отправлено на " + dateTime.getTime().toString() + " для соискателя " + seeker.getFio(), Toast.LENGTH_SHORT).show();
+    }
+
+    public void uploadedInterview(Interview interview){
+    }
+
+    public void addInterview(Interview interview) {
+        LoadHelper loadHelper = new LoadHelper(this, "uploadedInterview", Interview.class);
+        loadHelper.loadData(InterviewService.addInterview(interview));
     }
 }

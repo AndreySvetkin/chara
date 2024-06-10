@@ -18,7 +18,7 @@ import retrofit2.http.Query;
 
 public interface InterviewService {
 
-    final String VIEW = "employee-view";
+    final String VIEW = "interview-view";
 
     default Call<List<Interview>> allInterviews() {
         return allInterviews(" Bearer " + UserServiceHelper.ACCESS_TOKEN, VIEW);

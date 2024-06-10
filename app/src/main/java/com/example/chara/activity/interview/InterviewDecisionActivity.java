@@ -16,6 +16,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.chara.R;
+import com.example.chara.config.AppConfig;
+import com.example.chara.helper.LoadHelper;
+import com.example.chara.model.Employee;
+import com.example.chara.service.EmployeeService;
+
+import retrofit2.Retrofit;
 
 public class InterviewDecisionActivity extends AppCompatActivity {
 
@@ -24,6 +30,9 @@ public class InterviewDecisionActivity extends AppCompatActivity {
     private EditText editPosition;
     private EditText editSalary;
     private ImageButton buttonSave;
+    private Retrofit retrofit = AppConfig.getRetrofitInstance();
+
+    private EmployeeService employeeService = retrofit.create(EmployeeService.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,5 +79,15 @@ public class InterviewDecisionActivity extends AppCompatActivity {
     private void goBack() {
         Intent intent = new Intent(this, InterviewListActivity.class);
         startActivity(intent);
+    }
+
+    public void uploadedEmployee(Employee employee){
+
+    }
+
+    public void addEmployee(Employee employee) {
+        LoadHelper loadHelper = new LoadHelper(this, "uploadedEmployee", Employee.class);
+
+        loadHelper.loadData(employeeService.addEmployee(employee));
     }
 }

@@ -12,6 +12,7 @@ import com.example.chara.model.Employee;
 import com.example.chara.model.Passport;
 import com.example.chara.service.PassportService;
 
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Retrofit;
@@ -55,9 +56,9 @@ public class PassportActivity extends AppCompatActivity {
             passportIss = passport.getIssued() != null ? passport.getIssued().toString() : null;
             passportDep = passport.getDepartmentCode();
         }
-
         fio.setText((name == null || surname == null || patronymic == null ? "ФИО: Нет данных" : name + " " + surname + " " + patronymic));
-        bd.setText((dob == null) ? "Дата рождения: Нет данных" : "Дата рождения: " + dob);
+        Date dt = new Date(dob);
+        bd.setText((dob == null) ? "Дата рождения: Нет данных" : "Дата рождения: " + dt.getDay() + " " + dt.getMonth() + " " + dt.getYear());
         gender.setText((genderTxt == null) ? "Пол: Нет данных" : "Пол: " + genderTxt);
         passportNumber.setText((passportNum == null) ? "Номер паспорта: Нет данных" : "Номер паспорта: " + passportNum);
         passportIssued.setText((passportIss == null) ? "Дата выдачи: Нет данных" : "Дата выдачи: " + passportIss);

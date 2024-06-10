@@ -14,12 +14,12 @@ import retrofit2.http.Query;
 
 public interface ResumeService {
 
-    final String VIEW = "post-view";
+    final String VIEW = "resume-view";
 
     default Call<List<Resume>> allResumes() {
         return allResumes(" Bearer " + UserServiceHelper.ACCESS_TOKEN, VIEW);
     }
-    @GET("entities/chara_Post")
+    @GET("entities/chara_Resume")
     Call<List<Resume>> allResumes(@Header("Authorization") String auth, @Query("view") String view);
 
     default Call<Post> fetchResume(Resume resume) {

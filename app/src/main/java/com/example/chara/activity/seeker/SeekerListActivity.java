@@ -40,7 +40,11 @@ public class SeekerListActivity extends AppCompatActivity {
         setContentView(R.layout.list_seekers);
         recyclerView = findViewById(R.id.recycleViewApplicants);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        allResumes();
+    }
 
+    public void loadedResumes(List<Resume> resumes){
+        this.resumeList = resumes;
         seekerAdapter = new SeekerAdapter(this, resumeList, new SeekerAdapter.OnResumeClickListener() {
             @Override
             public void onResumeClick(int position) {
@@ -53,25 +57,8 @@ public class SeekerListActivity extends AppCompatActivity {
         recyclerView.setAdapter(seekerAdapter);
     }
 
-    public static List<Resume> getResumes() {
-        List<Resume> resumes = new ArrayList<>();
-
-        resumes.add(new Resume("1", "Иван Иванов", new Date(), "+79012345678", "ivanov@example.com", "Высшее образование", "Коммуникабельность, ответственность", "Java, Python"));
-        resumes.add(new Resume("2", "Петр Петров", new Date(), "+79087654321", "petrov@example.com", "Высшее образование", "Умение работать в команде", "C++, JavaScript"));
-        resumes.add(new Resume("3", "Анна Сидорова", new Date(), "+79161234567", "sidorova@example.com", "Высшее образование", "Ответственность, внимательность", "Python, Flutter"));
-        resumes.add(new Resume("4", "Дмитрий Кузнецов", new Date(), "+79165432109", "kuznetsov@example.com", "Высшее образование", "Коммуникабельность, нацеленность на результат", "Java, C#"));
-        resumes.add(new Resume("5", "Екатерина Смирнова", new Date(), "+79162345678", "smirnova@example.com", "Высшее образование", "Умение работать в команде, креативность", "JavaScript, Flutter"));
-
-        return resumes;
-    }
-
-    private void loadedResumes(List<Resume> resumes){
-        this.resumeList = resumes;
-    }
-
     private void allResumes() {
         LoadHelper loadHelper = new LoadHelper(this, "loadedResumes", List.class);
-
         loadHelper.loadData(resumeService.allResumes());
     }
 

@@ -64,9 +64,6 @@ public class EmployeeListActivity extends AppCompatActivity {
         recyclerView.setAdapter(employeeAdapter);
     }
 
-    private void uploadedEmployee(Employee employee){
-
-    }
 
     private void deletedEmployee(Employee employee){
 
@@ -76,6 +73,10 @@ public class EmployeeListActivity extends AppCompatActivity {
         LoadHelper loadHelper = new LoadHelper(this, "loadedEmployees", List.class);
 
         loadHelper.loadData(employeeService.allEmployees());
+    }
+
+    private void uploadedEmployee(Employee employee){
+
     }
 
     private void addEmployee(Employee employee) {
