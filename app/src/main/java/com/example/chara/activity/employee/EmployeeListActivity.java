@@ -68,7 +68,7 @@ public class EmployeeListActivity extends AppCompatActivity {
         employeeAdapter.notifyDataSetChanged();
     }
 
-    private void loadedEmployees(List<Employee> employees)
+    public void loadedEmployees(List<Employee> employees)
     {
         System.out.println(employees);
         this.employees = employees;
