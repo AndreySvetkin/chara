@@ -1,9 +1,10 @@
 package com.example.chara.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Employee {
+public class Employee implements Serializable {
     private String id;
 
     private String name;
@@ -31,6 +32,27 @@ public class Employee {
     private List<Employee> minions;
 
     private Passport passport;
+
+    public Employee(String id, String name, String surname, Double salary, String patronymic, String phone, String address)
+    {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.salary = salary;
+        this.patronymic = patronymic;
+        this.phone = phone;
+        this.address = address;
+    }
+
+    public Employee(String fio, Post post)
+    {
+        String[] temp = fio.split(" ");
+        this.post = post;
+        this.name = temp[0];
+        this.surname = temp[1];
+        if (temp.length == 3)
+            this.patronymic = temp[2];
+    }
 
     public String getId() {
         return id;

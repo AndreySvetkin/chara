@@ -1,6 +1,8 @@
 package com.example.chara.model;
 
-public class Vacancy {
+import java.io.Serializable;
+
+public class Vacancy implements Serializable {
 
     private String id;
 
@@ -11,6 +13,12 @@ public class Vacancy {
     private String circs;
 
     private Depart depart;
+
+    public Vacancy(String name, String circs)
+    {
+        this.name = name;
+        this.circs = circs;
+    }
 
     public String getId() {
         return id;

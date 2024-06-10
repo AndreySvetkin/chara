@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#015666"
+    android:padding="0dp"
+    tools:context=".activity.task.TaskListActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Задачи"
+        android:textColor="#FFFFFF"
+        android:textFontWeight="700"
+        android:textSize="24sp" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="60dp"
+        android:background="#5FBDCE">
+
+        <ListView
+            android:id="@+id/listViewTasks"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="16dp"
+            tools:listitem="@layout/item_task_layout" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/buttonAddTask"
+        android:layout_width="201dp"
+        android:layout_height="49dp"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="-50dp"
+        android:layout_marginRight="10dp"
+        android:backgroundTint="#FF7C00"
+        android:text="Добавить задачу"
+        android:textColor="#FFFFFF" />
+
+</RelativeLayout>

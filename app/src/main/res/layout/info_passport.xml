@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5FBDCE">
+
+    <TextView
+        android:id="@+id/tvPassportTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#015666"
+        android:fontFamily="sans-serif-condensed"
+        android:paddingTop="20dp"
+        android:text="Данные паспорта"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textFontWeight="700"
+        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/ivPassportPhoto"
+        android:layout_width="166dp"
+        android:layout_height="158dp"
+        android:layout_below="@id/tvPassportTitle"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:clipToOutline="false"
+        android:outlineProvider="bounds"
+        android:outlineSpotShadowColor="#000000"
+        android:paddingHorizontal="0dp"
+        android:paddingVertical="3dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        app:srcCompat="@mipmap/default_avatar"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <LinearLayout
+        android:id="@+id/llPassportInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvPassportTitle"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/ivPassportPhoto"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvFIO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/aldrich"
+            android:text="Иван Иванов Иванович"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvBD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/aldrich"
+            android:text="Дата рождения: 01.01.1990"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/aldrich"
+            android:text="Пол: мужской"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvPassportNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/aldrich"
+            android:text="Номер паспорта: 1234 567890"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvPassportIssued"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/aldrich"
+            android:text="Дата выдачи: 01.01.2015"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvPassportDepartment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/aldrich"
+            android:text="Код подразделения: 123-456"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

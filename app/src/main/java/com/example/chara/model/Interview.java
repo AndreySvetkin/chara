@@ -1,11 +1,11 @@
 package com.example.chara.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Interview {
+public class Interview implements Serializable {
 
     private String id;
-
     private Date date;
 
     private Boolean passed;
@@ -15,6 +15,14 @@ public class Interview {
     private Vacancy vacancy;
 
     private Employee interviewer;
+
+    public Interview(String id, Date date, Resume resume, Vacancy vacancy, Employee interviewer) {
+        this.id = id;
+        this.date = date;
+        this.resume = resume;
+        this.vacancy = vacancy;
+        this.interviewer = interviewer;
+    }
 
     public String getId() {
         return id;

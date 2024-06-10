@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="190dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="#65E080"
+    android:backgroundTint="#65E080"
+    android:backgroundTintMode="src_in"
+    android:fadingEdge="none"
+    android:hapticFeedbackEnabled="false"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:strokeColor="#015666"
+    app:strokeWidth="2dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
+        android:orientation="vertical"
+        android:padding="0dp"
+        android:textAlignment="center">
+
+        <TextView
+            android:id="@+id/vacancy_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/aldrich"
+            android:text="Название вакансии"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textFontWeight="?attr/motionDurationExtraLong1"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/vacancy_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginEnd="2dp"
+            android:fontFamily="@font/aldrich"
+            android:justificationMode="none"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="Краткое описание вакансии"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
