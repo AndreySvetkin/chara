@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Добавить интервью"
+        android:textSize="24sp"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/edit_candidate_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginTop="16dp"
+        android:hint="Имя соискателя"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/edit_position"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_candidate_name"
+        android:layout_marginTop="16dp"
+        android:hint="Позиция"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edit_interview_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_position"
+        android:layout_marginTop="16dp"
+        android:hint="Дата интервью"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/edit_interview_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_interview_date"
+        android:layout_marginTop="16dp"
+        android:hint="Время интервью"
+        android:inputType="time" />
+
+    <EditText
+        android:id="@+id/edit_interviewer_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_interview_time"
+        android:layout_marginTop="16dp"
+        android:hint="Имя интервьюера"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btn_save_interview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_interviewer_name"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:text="Сохранить"
+        android:backgroundTint="#5FBDCE"
+        android:textColor="#FFFFFF" />
+</RelativeLayout>

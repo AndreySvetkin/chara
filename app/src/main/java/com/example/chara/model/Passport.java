@@ -1,8 +1,9 @@
 package com.example.chara.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Passport {
+public class Passport implements Serializable {
 
     private String id;
 

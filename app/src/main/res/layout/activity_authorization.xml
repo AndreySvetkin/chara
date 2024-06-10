@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.user.Authorization"
+    android:background="#015666">
+
+    <EditText
+        android:id="@+id/login_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="16dp"
+        android:background="@android:drawable/edit_text"
+        android:fontFamily="@font/aldrich"
+        android:hint="Введите логин"
+        android:textColor="#000000"
+        android:textColorHint="#221F1F"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/password_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_edit_text"
+        android:layout_margin="16dp"
+        android:background="@android:drawable/edit_text"
+        android:fontFamily="@font/aldrich"
+        android:hint="Введите пароль"
+        android:inputType="textPassword"
+        android:textColor="#000000"
+        android:textColorHint="#221F1F"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password_edit_text"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/register_button"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@android:drawable/btn_default"
+            android:backgroundTint="#FF7C00"
+            android:backgroundTintMode="multiply"
+            android:fontFamily="@font/aldrich"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="Регистрация"
+            android:textColor="#FFFFFF"
+            android:textColorLink="#FF7C00"
+            android:textFontWeight="700"
+            android:textSize="16sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/login_button"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@android:drawable/btn_default"
+            android:backgroundTint="#FF7C00"
+            android:backgroundTintMode="multiply"
+            android:drawableTint="#FF7C00"
+            android:drawableTintMode="multiply"
+            android:fontFamily="@font/aldrich"
+            android:forceDarkAllowed="false"
+            android:text="Войти"
+            android:textColor="#FFFFFF"
+            android:textColorLink="#FF7C00"
+            android:textFontWeight="700"
+            android:textSize="16sp"
+            android:theme="@style/Button.White"
+            app:iconTint="#FF7C00"
+            app:iconTintMode="src_over" />
+    </LinearLayout>
+
+</RelativeLayout>

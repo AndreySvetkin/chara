@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.user.Registration"
+    android:background="#015666">
+
+    <EditText
+        android:id="@+id/et_first_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@android:drawable/edit_text"
+        android:fontFamily="@font/aldrich"
+        android:hint="Введите имя"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/et_last_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_first_name"
+        android:layout_margin="16dp"
+        android:background="@android:drawable/edit_text"
+        android:fontFamily="@font/aldrich"
+        android:hint="Введите фамилию"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/et_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_last_name"
+        android:layout_margin="16dp"
+        android:background="@android:drawable/edit_text"
+        android:fontFamily="@font/aldrich"
+        android:hint="Введите имя пользователя"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_username"
+        android:layout_margin="16dp"
+        android:background="@android:drawable/edit_text"
+        android:fontFamily="@font/aldrich"
+        android:hint="Введите пароль"
+        android:inputType="textPassword"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/et_confirm_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_password"
+        android:layout_margin="16dp"
+        android:background="@android:drawable/edit_text"
+        android:fontFamily="@font/aldrich"
+        android:hint="Подтвердите пароль"
+        android:inputType="textPassword"
+        android:textColor="#000000"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_confirm_password"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_select_dob"
+            android:layout_width="166dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@android:drawable/btn_default"
+            android:backgroundTint="#FF7C00"
+            android:backgroundTintMode="multiply"
+            android:fontFamily="@font/aldrich"
+            android:text="Выбрать дату рождения"
+            android:textColor="#FFFFFF"
+            android:textFontWeight="700"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_dob"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:width="230dp"
+            android:background="@android:drawable/edit_text"
+            android:editable="false"
+            android:fontFamily="@font/aldrich"
+            android:hint="Дата рождения"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout5"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="16dp"
+            android:src="@mipmap/default_avatar_foreground" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_upload_avatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@android:drawable/btn_default"
+                android:backgroundTint="#FF7C00"
+                android:backgroundTintMode="multiply"
+                android:fontFamily="@font/aldrich"
+                android:text="Загрузить аватар"
+                android:textColor="#FFFFFF"
+                android:textFontWeight="700"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_take_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@android:drawable/btn_default"
+                android:backgroundTint="#FF7C00"
+                android:backgroundTintMode="multiply"
+                android:fontFamily="@font/aldrich"
+                android:text="Сделать фото"
+                android:textColor="#FFFFFF"
+                android:textFontWeight="700"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_register"
+        android:layout_width="227dp"
+        android:layout_height="63dp"
+        android:layout_below="@+id/linearLayout6"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:drawable/btn_default"
+        android:backgroundTint="#FF7C00"
+        android:backgroundTintMode="multiply"
+        android:fontFamily="@font/aldrich"
+        android:text="Зарегистрироваться"
+        android:textColor="#FFFFFF"
+        android:textFontWeight="700"
+        android:textSize="16sp" />
+
+</RelativeLayout>

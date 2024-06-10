@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,42 +16,46 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Chara"
         android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.Chara"
         tools:targetApi="31">
+
         <activity
-            android:name=".activity.ReportActivity"
+            android:name=".activity.user.Authorization"
             android:exported="false" />
         <activity
-            android:name=".activity.PassportEditActivity"
+            android:name=".activity.user.Registration"
             android:exported="false" />
         <activity
-            android:name=".activity.DepartEditActivity"
-            android:exported="false" />
+            android:name=".activity.seeker.SeekerProfile"
+            android:exported="false"/>
         <activity
-            android:name=".activity.InterviewEditActivity"
-            android:exported="false" />
+            android:name=".activity.vacancy.VacancyListActivity"
+            android:exported="false"/>
         <activity
-            android:name=".activity.EmployeeEditActivity"
-            android:exported="false" />
+            android:name=".activity.interview.InterviewListActivity"
+            android:exported="false"/>
         <activity
-            android:name=".activity.VacancyActivity"
-            android:exported="false" />
+            android:name=".activity.seeker.SeekerListActivity"
+            android:exported="false"/>
         <activity
-            android:name=".activity.ResumeActivity"
-            android:exported="false" />
+            android:name=".activity.task.TaskListActivity"
+            android:exported="false"/>
         <activity
-            android:name=".activity.PostActivity"
-            android:exported="false" />
+            android:name=".activity.employee.EmployeeListActivity"
+            android:exported="false"/>
+        <activity android:name=".activity.employee.EmployeeInfoActivity"
+            android:exported="false"/>
         <activity
-            android:name=".activity.PassportActivity"
-            android:exported="false" />
+            android:name=".activity.interview.InterviewDecisionActivity"
+            android:exported="false"/>
         <activity
-            android:name=".activity.InterviewActivity"
-            android:exported="false" />
+            android:name=".activity.vacancy.VacancyInfoActivity"
+            android:exported="false"/>
         <activity
-            android:name=".activity.EmployeeActivity"
-            android:exported="false" />
+            android:name=".activity.passport.PassportActivity"
+            android:exported="false"/>
+
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">
@@ -57,6 +65,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -1,12 +1,20 @@
 package com.example.chara.model;
 
-public class Post {
+import java.io.Serializable;
+
+public class Post implements Serializable {
 
     private String id;
 
     private String name;
 
     private Depart depart;
+
+    public Post(String name, Depart depart)
+    {
+        this.name = name;
+        this.depart = depart;
+    }
 
     public String getId() {
         return id;

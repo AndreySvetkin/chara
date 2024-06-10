@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#015666"
+    tools:context=".activity.vacancy.VacancyInfoActivity">
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-condensed"
+        android:paddingTop="20dp"
+        android:text="Информация о вакансии"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textFontWeight="700"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="30dp"
+        android:background="#5FBDCE"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textVacancyName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:fontFamily="@font/aldrich"
+            android:text="Название вакансии"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textFontWeight="700"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textVacancyDepart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:fontFamily="@font/aldrich"
+            android:text="Отдел"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textVacancyRequirements"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:fontFamily="@font/aldrich"
+            android:text="Требования"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textVacancyCircs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:fontFamily="@font/aldrich"
+            android:text="Условия"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+</RelativeLayout>

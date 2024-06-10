@@ -1,8 +1,9 @@
 package com.example.chara.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Resume {
+public class Resume implements Serializable {
 
     private String id;
 
@@ -29,6 +30,17 @@ public class Resume {
     private String additionalInfo;
 
     private Vacancy vacancy;
+
+    public Resume(String id, String fio, Date born, String phone, String email, String education, String softSkills, String hardSkills) {
+        this.id = id;
+        this.fio = fio;
+        this.born = born;
+        this.phone = phone;
+        this.email = email;
+        this.education = education;
+        this.softSkills = softSkills;
+        this.hardSkills = hardSkills;
+    }
 
     public String getId() {
         return id;

@@ -1,8 +1,9 @@
 package com.example.chara.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Depart {
+public class Depart implements Serializable {
 
     private String id;
 
