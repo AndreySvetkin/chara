@@ -42,26 +42,6 @@ public class EmployeeListActivity extends AppCompatActivity {
         allEmployees();
     }
 
-    private List<Employee> createFakeEmployees() {
-        List<Employee> fakeEmployees = new ArrayList<>();
-        fakeEmployees.add(new Employee("1", "John", "Doe", 60000.0, "Jr.", "1234567890", "123 Street"));
-        fakeEmployees.add(new Employee("2", "Jane", "Smith", 70000.0, "M.", "1234567891", "456 Avenue"));
-        fakeEmployees.add(new Employee("3", "Bob", "Johnson", 50000.0, "Sr.", "1234567892", "789 Boulevard"));
-        fakeEmployees.add(new Employee("4", "Emily", "Davis", 80000.0, "Jr.", "1234567893", "101 Pine Street"));
-        fakeEmployees.add(new Employee("5", "Mike", "Wilson", 55000.0, "Sr.", "1234567894", "202 Oak Avenue"));
-        fakeEmployees.add(new Employee("6", "Sarah", "Brown", 75000.0, "M.", "1234567895", "303 Maple Boulevard"));
-        fakeEmployees.add(new Employee("7", "David", "Anderson", 65000.0, "Jr.", "1234567896", "404 Elm Street"));
-        fakeEmployees.add(new Employee("8", "Laura", "Martinez", 72000.0, "Sr.", "1234567897", "505 Birch Avenue"));
-        fakeEmployees.add(new Employee("9", "Chris", "Garcia", 68000.0, "M.", "1234567898", "606 Pine Boulevard"));
-        fakeEmployees.add(new Employee("10", "Maria", "Lopez", 59000.0, "Jr.", "1234567899", "707 Oak Street"));
-        fakeEmployees.add(new Employee("11", "Matt", "Taylor", 63000.0, "Sr.", "1234567800", "808 Maple Avenue"));
-        fakeEmployees.add(new Employee("12", "Amy", "Scott", 71000.0, "M.", "1234567801", "909 Elm Boulevard"));
-        fakeEmployees.add(new Employee("13", "Kevin", "Adams", 54000.0, "Jr.", "1234567802", "111 Pine Street"));
-        fakeEmployees.add(new Employee("14", "Rachel", "Thomas", 59000.0, "Sr.", "1234567803", "222 Oak Avenue"));
-        fakeEmployees.add(new Employee("15", "Daniel", "Allen", 78000.0, "M.", "1234567804", "333 Maple Boulevard"));
-        return fakeEmployees;
-    }
-
 
     private void loadEmployees() {
 
