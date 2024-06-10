@@ -20,9 +20,13 @@ import com.example.chara.config.AppConfig;
 import com.example.chara.helper.LoadHelper;
 import com.example.chara.model.Employee;
 import com.example.chara.model.Interview;
+import com.example.chara.model.Post;
 import com.example.chara.model.Resume;
 import com.example.chara.service.EmployeeService;
+import com.example.chara.service.PostService;
 import com.example.chara.service.ResumeService;
+
+import java.util.List;
 
 import retrofit2.Retrofit;
 
@@ -35,6 +39,9 @@ public class InterviewDecisionActivity extends AppCompatActivity {
     private ImageButton buttonSave;
     private Retrofit retrofit = AppConfig.getRetrofitInstance();
 
+    private List<Post> posts;
+
+    private PostService postService = retrofit.create(PostService.class);
     private ResumeService resumeService = retrofit.create(ResumeService.class);
     private EmployeeService employeeService = retrofit.create(EmployeeService.class);
 
@@ -50,7 +57,7 @@ public class InterviewDecisionActivity extends AppCompatActivity {
         editPosition = findViewById(R.id.editPosition);
         editSalary = findViewById(R.id.editSalary);
         buttonSave = findViewById(R.id.buttonSave);
-
+        allPosts();
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra("interview")) {
             interview = (Interview) intent.getSerializableExtra("interview");
@@ -89,9 +96,14 @@ public class InterviewDecisionActivity extends AppCompatActivity {
 
     }
 
-    private void ReplaceSeekerToEmployee(Resume r, String salary,  position) {
+    private void ReplaceSeekerToEmployee(Resume r, String salary, String position) {
+        Post post = posts.stream()
+                .filter(post1 -> post1.getName().equals(position))
+                .findFirst()
+                .get();
+
         String[] fio = r.getFio().split(" ");
-        Employee emp = new Employee(fio[0], fio[1], fio[2], Double.parseDouble(salary), r.getPhone(), "");
+        Employee emp = new Employee(fio[0], fio[1], fio[2], Double.parseDouble(salary), r.getPhone(), "", );
         addEmployee(emp);
         deleteResume(r);
     }
@@ -108,6 +120,13 @@ public class InterviewDecisionActivity extends AppCompatActivity {
     public void deletedResume(){
 
     }
+
+    public void loadedPosts(List<Post> posts){
+
+        this.posts = posts;
+    }
+
+
     private void deleteResume(Resume resume) {
         LoadHelper loadHelper = new LoadHelper(this, "deletedResume");
 
@@ -118,5 +137,11 @@ public class InterviewDecisionActivity extends AppCompatActivity {
         LoadHelper loadHelper = new LoadHelper(this, "uploadedEmployee", Employee.class);
 
         loadHelper.loadData(employeeService.addEmployee(employee));
+    }
+
+    private void allPosts() {
+        LoadHelper loadHelper = new LoadHelper(this, "loadedPosts", List.class);
+
+        loadHelper.loadData(postService.allPosts());
     }
 }
