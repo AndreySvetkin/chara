@@ -33,9 +33,7 @@ public class ResumeActivity extends AppCompatActivity {
         this.resumes = resumes;
     }
 
-    public void deletedResume(){
 
-    }
 
     private void allResumes() {
         LoadHelper loadHelper = new LoadHelper(this, "loadedResumes", List.class);
@@ -43,6 +41,9 @@ public class ResumeActivity extends AppCompatActivity {
         loadHelper.loadData(resumeService.allResumes());
     }
 
+    public void deletedResume(){
+
+    }
     private void deleteResume(Resume resume) {
         LoadHelper loadHelper = new LoadHelper(this, "deletedResume");
 

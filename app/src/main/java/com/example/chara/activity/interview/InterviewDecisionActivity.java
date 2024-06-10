@@ -19,7 +19,10 @@ import com.example.chara.R;
 import com.example.chara.config.AppConfig;
 import com.example.chara.helper.LoadHelper;
 import com.example.chara.model.Employee;
+import com.example.chara.model.Interview;
+import com.example.chara.model.Resume;
 import com.example.chara.service.EmployeeService;
+import com.example.chara.service.ResumeService;
 
 import retrofit2.Retrofit;
 
@@ -32,7 +35,10 @@ public class InterviewDecisionActivity extends AppCompatActivity {
     private ImageButton buttonSave;
     private Retrofit retrofit = AppConfig.getRetrofitInstance();
 
+    private ResumeService resumeService = retrofit.create(ResumeService.class);
     private EmployeeService employeeService = retrofit.create(EmployeeService.class);
+
+    private Interview interview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,11 @@ public class InterviewDecisionActivity extends AppCompatActivity {
         editPosition = findViewById(R.id.editPosition);
         editSalary = findViewById(R.id.editSalary);
         buttonSave = findViewById(R.id.buttonSave);
+
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("interview")) {
+            interview = (Interview) intent.getSerializableExtra("interview");
+        }
 
         // Set checkbox listener
         checkboxAccepted.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -68,12 +79,21 @@ public class InterviewDecisionActivity extends AppCompatActivity {
                 return;
             }
             Toast.makeText(this, "Decision saved: Accepted", Toast.LENGTH_LONG).show();
+            ReplaceSeekerToEmployee(interview.getResume(), salary, position);
             goBack();
         } else {
             Toast.makeText(this, "Decision saved: Rejected", Toast.LENGTH_LONG).show();
+            deleteResume(interview.getResume());
             goBack();
         }
 
+    }
+
+    private void ReplaceSeekerToEmployee(Resume r, String salary,  position) {
+        String[] fio = r.getFio().split(" ");
+        Employee emp = new Employee(fio[0], fio[1], fio[2], Double.parseDouble(salary), r.getPhone(), "");
+        addEmployee(emp);
+        deleteResume(r);
     }
 
     private void goBack() {
@@ -83,6 +103,15 @@ public class InterviewDecisionActivity extends AppCompatActivity {
 
     public void uploadedEmployee(Employee employee){
 
+    }
+
+    public void deletedResume(){
+
+    }
+    private void deleteResume(Resume resume) {
+        LoadHelper loadHelper = new LoadHelper(this, "deletedResume");
+
+        loadHelper.loadData(resumeService.deleteResume(resume));
     }
 
     public void addEmployee(Employee employee) {

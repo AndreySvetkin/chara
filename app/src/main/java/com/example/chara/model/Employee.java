@@ -31,9 +31,8 @@ public class Employee implements Serializable {
 
     private Passport passport;
 
-    public Employee(String id, String name, String surname, Double salary, String patronymic, String phone, String address)
+    public Employee(String name, String surname, String patronymic, Double salary, String phone, String address)
     {
-        this.id = id;
         this.name = name;
         this.surname = surname;
         this.salary = salary;
