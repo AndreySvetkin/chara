@@ -14,7 +14,6 @@ public class AppConfig {
     public static Retrofit getRetrofitInstance() {
 
         Gson gson = new GsonBuilder()
-                .excludeFieldsWithoutExposeAnnotation()
                 .setDateFormat("yyyy-MM-dd HH:mm:ss.SSS")
                 .create();
 

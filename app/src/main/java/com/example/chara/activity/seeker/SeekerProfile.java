@@ -88,30 +88,17 @@ public class SeekerProfile extends AppCompatActivity {
     }
 
     private void showInviteDialog() {
-        // Создание диалогового окна
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Приглашение на собеседование");
-
-        // Инфлейтируем диалоговое окно из XML
         View dialogView = getLayoutInflater().inflate(R.layout.dialogue_invite, null);
         builder.setView(dialogView);
-
-        // Получаем элементы интерфейса
         TextView tvDateTime = dialogView.findViewById(R.id.tvDateTime);
         Button btnCancel = dialogView.findViewById(R.id.btnCancel);
         Button btnInvite = dialogView.findViewById(R.id.btnInvite);
-
-        // Установка обработчика для выбора даты и времени
         tvDateTime.setOnClickListener(v -> showDateTimePicker(tvDateTime));
-
-        // Создание и отображение диалогового окна
         AlertDialog dialog = builder.create();
         dialog.show();
-
-        // Установка обработчика для кнопки "Отмена"
         btnCancel.setOnClickListener(v -> dialog.dismiss());
-
-        // Установка обработчика для кнопки "Пригласить"
         btnInvite.setOnClickListener(v -> {
             if (selectedDateTime.getTimeInMillis() < System.currentTimeMillis()) {
                 Toast.makeText(this, "Выберите будущую дату и время", Toast.LENGTH_SHORT).show();

@@ -45,7 +45,7 @@ public class EmployeeInfoActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(EmployeeInfoActivity.this, PassportActivity.class);
-                      //  intent.putExtra("employee", employee);
+                        intent.putExtra("employee", employee);
                         startActivity(intent);
                     }
                 });
@@ -60,21 +60,26 @@ public class EmployeeInfoActivity extends AppCompatActivity {
 
     private void displayEmployeeDetails(Employee employee) {
         fioTextView.setText("ФИО: " + employee.getName() + " " + employee.getSurname() + " " + employee.getPatronymic());
-        phoneTextView.setText("Телефон: " + employee.getPhone());
-        addressTextView.setText("Адрес: " + employee.getAddress());
-
+        if (employee.getPhone() != null) {
+            phoneTextView.setText(employee.getPhone());
+        } else {
+            phoneTextView.setText("Телефон: Нет данных");
+        }
+        if (employee.getAddress() != null) {
+            addressTextView.setText("Адрес: " + employee.getAddress());
+        } else {
+            addressTextView.setText("Адрес: Нет данных");
+        }
         if (employee.getChief() != null) {
             chiefTextView.setText("Начальник: " + employee.getChief().getName() + " " + employee.getChief().getSurname() + " " +employee.getChief().getPatronymic());
         } else {
             chiefTextView.setText("Начальник: Нет данных");
         }
-
         if (employee.getDepart() != null) {
             departTextView.setText("Отдел: " + employee.getDepart().getName());
         } else {
             departTextView.setText("Отдел: Нет данных");
         }
-
         if (employee.getPost() != null) {
             postTextView.setText("Должность: " + employee.getPost().getName());
         } else {
