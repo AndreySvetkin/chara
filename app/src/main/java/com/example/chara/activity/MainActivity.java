@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -17,13 +18,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.chara.R;
 import com.example.chara.activity.employee.EmployeeListActivity;
+import com.example.chara.activity.interview.InterviewDecisionActivity;
 import com.example.chara.activity.interview.InterviewListActivity;
 import com.example.chara.activity.task.TaskListActivity;
 import com.example.chara.activity.user.Authorization;
-import com.example.chara.activity.employee.EmployeeInfoActivity;
 import com.example.chara.activity.seeker.SeekerListActivity;
 import com.example.chara.activity.vacancy.VacancyListActivity;
-import com.example.chara.activity.user.ProfileFragment;
+import com.example.chara.activity.user.ProfileActivity;
 import com.example.chara.config.AppConfig;
 import com.example.chara.helper.LoadHelper;
 import com.example.chara.helper.UserServiceHelper;
@@ -80,11 +81,11 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         setContentView(R.layout.activity_main);
-        Button openVacanciesButton = findViewById(R.id.btnVacancyListActivity);
-        Button openInterviewButton = findViewById(R.id.btnInterviewListActivity);
-        Button openSeekersButton = findViewById(R.id.btnSeekerListActivity);
-        Button openTasksButton = findViewById(R.id.btnTaskActivity);
-        Button openEmployeesButton = findViewById(R.id.btnEmployeeListActivity);
+        CardView openVacanciesButton = findViewById(R.id.cardVacancies);
+        CardView openInterviewButton = findViewById(R.id.cardInterviews);
+        CardView openSeekersButton = findViewById(R.id.cardSeekers);
+        CardView openTasksButton = findViewById(R.id.cardTasks);
+        CardView openEmployeesButton = findViewById(R.id.cardEmployees);
         openVacanciesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,23 +135,13 @@ public class MainActivity extends AppCompatActivity {
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        Fragment fragment = null;
                         switch (item.getTitle().toString()) {
                             case "Личный кабинет": // nav_profile
-                                fragment = new ProfileFragment();
+                                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                                startActivity(intent);
                                 break;
                             case "Выход":
                                 logoutUser();
-                        }
-                        if (fragment != null) {
-                            FragmentManager fragmentManager = getSupportFragmentManager();
-                            FragmentTransaction ft = fragmentManager.beginTransaction();
-                            ft.replace(R.id.fragmentContainer, fragment);
-                            ft.addToBackStack(null);
-                            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                            ft.commit();
-                            drawerLayout.closeDrawers();
-                            return true;
                         }
 
                         return false;
@@ -158,14 +149,8 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
-       // List<Employee> employeeList = new ArrayList<>();
-        // Добавьте сотрудников в список
-
-      //  EmployeeListFragment employeeListFragment = new EmployeeListFragment(employeeList);
-
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-      //  fragmentTransaction.add(R.id.fragmentContainer, employeeListFragment);
         fragmentTransaction.commit();
     }
 

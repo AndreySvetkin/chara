@@ -13,9 +13,7 @@ import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -24,7 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.chara.R;
 
@@ -32,50 +30,35 @@ import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+public class ProfileActivity extends AppCompatActivity {
 
-public class ProfileFragment extends Fragment {
     private boolean isChangePasswordVisible = false;
     private boolean isChangeAvatarVisible = false;
     Uri image;
     byte[] imageBytes;
     ImageView avatarImageView;
 
-    public ProfileFragment() {
-        // Required empty public constructor
-    }
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_profile);
 
-        avatarImageView = view.findViewById(R.id.avatarImageView);
-        EditText firstNameEditText = view.findViewById(R.id.firstNameEditText);
-        EditText lastNameEditText = view.findViewById(R.id.lastNameEditText);
-        EditText birthDateEditText = view.findViewById(R.id.birthDateEditText);
-        EditText currentPassEditText = view.findViewById(R.id.currentPasswordEditText);
-        EditText newPassEditText = view.findViewById(R.id.newPasswordEditText);
+        avatarImageView = findViewById(R.id.avatarImageView);
+        EditText firstNameEditText = findViewById(R.id.firstNameEditText);
+        EditText lastNameEditText = findViewById(R.id.lastNameEditText);
+        EditText birthDateEditText = findViewById(R.id.birthDateEditText);
+        EditText currentPassEditText = findViewById(R.id.currentPasswordEditText);
+        EditText newPassEditText = findViewById(R.id.newPasswordEditText);
 
-        Button takePhotoButton = view.findViewById(R.id.photoButton);
-        Button editButton = view.findViewById(R.id.editButton);
-        Button dobEditButton = view.findViewById(R.id.btn_select_dob);
-        Button changeAvatarButton = view.findViewById(R.id.changeAvatarButton);
-        Button changePasswordButton = view.findViewById(R.id.changePasswordButton);
-        LinearLayout changePasswordLayout = view.findViewById(R.id.changePasswordLayout);
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", getActivity().MODE_PRIVATE);
+        Button takePhotoButton = findViewById(R.id.photoButton);
+        Button editButton = findViewById(R.id.editButton);
+        Button dobEditButton = findViewById(R.id.btn_select_dob);
+        Button changeAvatarButton = findViewById(R.id.changeAvatarButton);
+        Button changePasswordButton = findViewById(R.id.changePasswordButton);
+        LinearLayout changePasswordLayout = findViewById(R.id.changePasswordLayout);
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         String username = sharedPreferences.getString("username", "");
-//        Profile profile = getUserProfile(username);
-//        if (profile != null) {
-//            firstNameEditText.setText(profile.getFirstName());
-//            lastNameEditText.setText(profile.getLastName());
-//            birthDateEditText.setText(profile.getBirthDate());
-//            byte[] avatar = profile.getAvatar();
-//            imageBytes = avatar;
-//            if (avatar != null) {
-//                Bitmap bitmap = BitmapFactory.decodeByteArray(avatar, 0, avatar.length);
-//                avatarImageView.setImageBitmap(bitmap);
-//            }
-//        }
+
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,42 +71,40 @@ public class ProfileFragment extends Fragment {
                     isChangeAvatarVisible = false;
 
                     if (firstNameEditText.getText().toString().isEmpty() || lastNameEditText.getText().toString().isEmpty() || birthDateEditText.getText().toString().isEmpty()) {
-                        Toast.makeText(getActivity(), "Не все поля заполнены", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProfileActivity.this, "Не все поля заполнены", Toast.LENGTH_SHORT).show();
                         return;
                     }
                     String dob = birthDateEditText.getText().toString();
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     Calendar currentDate = Calendar.getInstance();
                     Calendar dobDate = Calendar.getInstance();
                     try {
                         dobDate.setTime(sdf.parse(dob));
-                    }
-                    catch (java.text.ParseException e) {
+                    } catch (java.text.ParseException e) {
                         return;
                     }
                     if (dobDate.after(currentDate)) {
-                        Toast.makeText(getContext(), "Дата рождения не может быть в будущем", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProfileActivity.this, "Дата рождения не может быть в будущем", Toast.LENGTH_SHORT).show();
                         return;
                     }
 
                     currentDate.add(Calendar.YEAR, -6); // Minimum age of 6 years
                     if (dobDate.after(currentDate)) {
-                        Toast.makeText(getContext(), "Пользователь должен быть не моложе 6 лет", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProfileActivity.this, "Пользователь должен быть не моложе 6 лет", Toast.LENGTH_SHORT).show();
                         return;
                     }
                     byte[] avatarBytes;
                     if (imageBytes != null && image == null) {
                         avatarBytes = imageBytes;
-                    }
-                    else if (image == null) avatarBytes = null;
+                    } else if (image == null) avatarBytes = null;
                     else try {
-                        Bitmap bitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(getActivity().getContentResolver(), image));
-                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                        bitmap.compress(Bitmap.CompressFormat.PNG, 50, stream);
-                        avatarBytes= stream.toByteArray();
-                    } catch (java.io.IOException e) {
-                        avatarBytes = new byte[]{};
-                    }
+                            Bitmap bitmap = ImageDecoder.decodeBitmap(ImageDecoder.createSource(getContentResolver(), image));
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            bitmap.compress(Bitmap.CompressFormat.PNG, 50, stream);
+                            avatarBytes = stream.toByteArray();
+                        } catch (java.io.IOException e) {
+                            avatarBytes = new byte[]{};
+                        }
 
                     // Обновление данных в базе данных
                     updateProfile(username, firstNameEditText.getText().toString(), lastNameEditText.getText().toString(), birthDateEditText.getText().toString(), avatarBytes);
@@ -141,14 +122,12 @@ public class ProfileFragment extends Fragment {
         dobEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Get current date
                 final Calendar c = Calendar.getInstance();
                 int year = c.get(Calendar.YEAR);
                 int month = c.get(Calendar.MONTH);
                 int day = c.get(Calendar.DAY_OF_MONTH);
 
-                // Create and show DatePickerDialog
-                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(ProfileActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         String selectedDate = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;
@@ -163,21 +142,20 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
                     startActivityForResult(takePictureIntent, 1);
                 } else {
-                    Toast.makeText(getActivity().getApplicationContext(), "Камера недоступна", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProfileActivity.this, "Камера недоступна", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
         changeAvatarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectImage();
             }
         });
-
-
 
         changePasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -192,40 +170,32 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        Button confirmPasswordButton = view.findViewById(R.id.confirmPasswordButton);
+        Button confirmPasswordButton = findViewById(R.id.confirmPasswordButton);
         confirmPasswordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String currentPassword = currentPassEditText.getText().toString();
                 String newPassword = newPassEditText.getText().toString();
                 if (newPassword.length() < 4) {
-                    Toast.makeText(getContext(), "Пароль слишком короткий", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProfileActivity.this, "Пароль слишком короткий", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                // Проверка текущего пароля
                 boolean isPasswordCorrect = checkPassword(username, currentPassword);
 
                 if (isPasswordCorrect) {
-                    // Обновление нового пароля
                     boolean success = updatePassword(username, newPassword);
                     if (success) {
-                        Toast.makeText(getContext(), "Пароль успешно обновлен", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProfileActivity.this, "Пароль успешно обновлен", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(getContext(), "Ошибка при обновлении пароля", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ProfileActivity.this, "Ошибка при обновлении пароля", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getContext(), "Введен неверный текущий пароль", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProfileActivity.this, "Введен неверный текущий пароль", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-
-
-        return view;
     }
-
-
 
     private void selectImage() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -236,27 +206,25 @@ public class ProfileFragment extends Fragment {
     private void updateProfile(String username, String firstName, String lastName, String birthDate, byte[] avatar) {
         boolean success = updateUserProfile(username, firstName, lastName, birthDate, avatar);
         if (!success) {
-            Toast.makeText(getContext(), "Ошибка при обновлении данных", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ProfileActivity.this, "Ошибка при обновлении данных", Toast.LENGTH_SHORT).show();
         }
     }
 
-
     @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == 100 && resultCode == Activity.RESULT_OK && data != null) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
             Uri imageUri = data.getData();
             image = imageUri;
             avatarImageView.setImageURI(imageUri);
         }
-        if (requestCode == 1 && resultCode == -1) {
+        if (requestCode == 1 && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
             imageBytes = stream.toByteArray();
-            // Отображаем изображение
             avatarImageView.setImageBitmap(imageBitmap);
         }
     }
-
 }
