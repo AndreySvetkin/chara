@@ -85,4 +85,5 @@ public class InterviewListActivity extends AppCompatActivity {
 
         loadHelper.loadData(InterviewService.deleteInterview(interview));
     }
+
 }

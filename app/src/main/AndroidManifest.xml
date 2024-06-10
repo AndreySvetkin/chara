@@ -55,6 +55,9 @@
         <activity
             android:name=".activity.passport.PassportActivity"
             android:exported="false"/>
+        <activity
+            android:name=".activity.user.ProfileActivity"
+            android:exported="false"/>
 
         <activity
             android:name=".activity.MainActivity"

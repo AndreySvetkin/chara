@@ -23,6 +23,7 @@ import com.example.chara.model.Interview;
 import com.example.chara.model.Post;
 import com.example.chara.model.Resume;
 import com.example.chara.service.EmployeeService;
+import com.example.chara.service.InterviewService;
 import com.example.chara.service.PostService;
 import com.example.chara.service.ResumeService;
 
@@ -44,6 +45,7 @@ public class InterviewDecisionActivity extends AppCompatActivity {
     private PostService postService = retrofit.create(PostService.class);
     private ResumeService resumeService = retrofit.create(ResumeService.class);
     private EmployeeService employeeService = retrofit.create(EmployeeService.class);
+    private com.example.chara.service.InterviewService InterviewService = retrofit.create(com.example.chara.service.InterviewService.class);
 
     private Interview interview;
 
@@ -99,12 +101,13 @@ public class InterviewDecisionActivity extends AppCompatActivity {
     private void ReplaceSeekerToEmployee(Resume r, String salary, String position) {
         Post post = posts.stream()
                 .filter(post1 -> post1.getName().equals(position))
-                .findFirst()
-                .get();
+                .findFirst().orElse(null);
 
+        if (post == null) post = posts.get(0);
         String[] fio = r.getFio().split(" ");
-        Employee emp = new Employee(fio[0], fio[1], fio[2], Double.parseDouble(salary), r.getPhone(), "", );
+        Employee emp = new Employee(fio[0], fio[1], fio[2], Double.parseDouble(salary), r.getPhone(), "", post);
         addEmployee(emp);
+        deleteInterview(interview);
         deleteResume(r);
     }
 
@@ -143,5 +146,15 @@ public class InterviewDecisionActivity extends AppCompatActivity {
         LoadHelper loadHelper = new LoadHelper(this, "loadedPosts", List.class);
 
         loadHelper.loadData(postService.allPosts());
+    }
+
+    private void deleteInterview(Interview interview) {
+        LoadHelper loadHelper = new LoadHelper(this, "deletedInterview", Interview.class);
+
+        loadHelper.loadData(InterviewService.deleteInterview(interview));
+    }
+
+    private void deletedInterview(Interview interview){
+
     }
 }
