@@ -2,6 +2,7 @@ package com.example.chara.helper;
 
 import java.lang.reflect.Method;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,8 +29,13 @@ public class LoadHelper {
                     if (response.errorBody() != null) {
                         System.out.println(call.request());
                         System.out.println(response.errorBody().string());
+                        return;
                     }
                     Method method = activity.getClass().getMethod(methodName, classes);
+                    if (response.body() instanceof ResponseBody){
+                        method.invoke(activity);
+                        return;
+                    }
                     method.invoke(activity, response.body());
                 } catch (Exception ex) {
                     ex.printStackTrace();

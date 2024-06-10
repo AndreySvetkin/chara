@@ -15,8 +15,6 @@ public class Passport implements Serializable {
 
     private String departmentCode;
 
-    private Employee employee;
-
     public String getId() {
         return id;
     }

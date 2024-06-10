@@ -29,8 +29,6 @@ public class Employee implements Serializable {
 
     private Post post;
 
-    private List<Employee> minions;
-
     private Passport passport;
 
     public Employee(String id, String name, String surname, Double salary, String patronymic, String phone, String address)
@@ -148,14 +146,6 @@ public class Employee implements Serializable {
 
     public void setPost(Post post) {
         this.post = post;
-    }
-
-    public List<Employee> getMinions() {
-        return minions;
-    }
-
-    public void setMinions(List<Employee> minions) {
-        this.minions = minions;
     }
 
     public Passport getPassport() {
