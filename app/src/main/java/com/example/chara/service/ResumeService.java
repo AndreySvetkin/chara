@@ -7,6 +7,7 @@ import com.example.chara.model.Resume;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Path;
@@ -27,4 +28,10 @@ public interface ResumeService {
     }
     @GET("entities/chara_Resume/{resumeId}")
     Call<Post> fetchResume(@Header("Authorization") String auth, @Path("resumeId") String resumeId, @Query("view") String view);
+
+    default Call<Post> deleteResume(Resume resume) {
+        return deleteResume(" Bearer " + UserServiceHelper.ACCESS_TOKEN, resume.getId());
+    }
+    @DELETE("entities/chara_Resume/{resumeId}")
+    Call<Post> deleteResume(@Header("Authorization") String auth, @Path("resumeId") String resumeId);
 }
