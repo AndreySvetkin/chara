@@ -12,6 +12,8 @@ import com.example.chara.model.Employee;
 import com.example.chara.model.Passport;
 import com.example.chara.service.PassportService;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -45,7 +47,20 @@ public class PassportActivity extends AppCompatActivity {
         String name = employee.getName();
         String surname = employee.getSurname();
         String patronymic = employee.getPatronymic();
-        String dob = employee.getBorn() != null ? employee.getBorn().toString() : null;
+        String dob = "";
+        String issued = "";
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            dob = dateFormat.format(employee.getBorn());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            issued = dateFormat.format(employee.getPassport().getIssued());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         Boolean res = employee.getSex();
         String genderTxt = null;
         if (res != null)
@@ -53,12 +68,11 @@ public class PassportActivity extends AppCompatActivity {
         String passportNum = null, passportIss = null, passportDep = null;
         if (passport != null) {
             passportNum = passport.getNumber();
-            passportIss = passport.getIssued() != null ? passport.getIssued().toString() : null;
+            passportIss = issued;
             passportDep = passport.getDepartmentCode();
         }
         fio.setText((name == null || surname == null || patronymic == null ? "ФИО: Нет данных" : name + " " + surname + " " + patronymic));
-        Date dt = new Date(dob);
-        bd.setText((dob == null) ? "Дата рождения: Нет данных" : "Дата рождения: " + dt.getDay() + " " + dt.getMonth() + " " + dt.getYear());
+        bd.setText((dob == null) ? "Дата рождения: Нет данных" : "Дата рождения: " + dob);
         gender.setText((genderTxt == null) ? "Пол: Нет данных" : "Пол: " + genderTxt);
         passportNumber.setText((passportNum == null) ? "Номер паспорта: Нет данных" : "Номер паспорта: " + passportNum);
         passportIssued.setText((passportIss == null) ? "Дата выдачи: Нет данных" : "Дата выдачи: " + passportIss);

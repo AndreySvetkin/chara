@@ -27,6 +27,9 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.widget.Button;
 import android.widget.DatePicker;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -83,10 +86,18 @@ public class SeekerProfile extends AppCompatActivity {
     }
 
     private void displaySeekerDetails(Resume seeker) {
+        String dob = "Нет данных";
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            dob = dateFormat.format(seeker.getBorn());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         // Заполняем поля данными из объекта Seeker
         titleTextView.setText("Вакансия: " + (seeker.getVacancy() != null ? seeker.getVacancy().getName() : "Не указано"));
         fioTextView.setText("ФИО: " + (seeker.getFio() != null ? seeker.getFio() : "Нет данных"));
-        birthDateTextView.setText("Дата рождения: " + (seeker.getBorn() == null ? "Нет данных" : seeker.getBorn()));
+        birthDateTextView.setText("Дата рождения: " + dob);
         maritalStatusTextView.setText("Семейное положение: " + (seeker.getMarried() == null ? "Нет данных" : seeker.getMarried()));
         phoneTextView.setText("Телефон: " + (seeker.getPhone() == null ? "Нет данных" : seeker.getPhone()));
         emailTextView.setText("Email: " + (seeker.getEmail() == null ? "Нет данных" : seeker.getEmail()));

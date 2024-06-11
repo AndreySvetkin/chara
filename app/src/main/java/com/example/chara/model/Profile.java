@@ -8,6 +8,13 @@ public class Profile {
 
     private String lastName;
 
+    public Profile(String login, String password, String lastName, String firstName) {
+        this.login = login;
+        this.password = password;
+        this.lastName = lastName;
+        this.firstName = firstName;
+    }
+
     public String getLogin() {
         return login;
     }

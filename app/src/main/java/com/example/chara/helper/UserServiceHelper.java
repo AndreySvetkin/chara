@@ -18,6 +18,8 @@ public class UserServiceHelper {
 
     static String USER_PASSWORD = "admin";
 
+
+
     public static String base64RestParams() {
         Base64.Encoder encoder = Base64.getEncoder();
         String restParams = String.format("%s:%s", REST_ID, REST_SECRET);
@@ -36,14 +38,5 @@ public class UserServiceHelper {
                 .format("grant_type=password&username=%s&password=%s",
                         USER_LOGIN,
                         USER_PASSWORD);
-    }
-
-    public void createdUser(){
-
-    }
-    private void createUser(Profile profile) {
-        LoadHelper loadHelper = new LoadHelper(this, "createUser", Profile.class);
-
-        loadHelper.loadData(userService.deleteResume(profile));
     }
 }

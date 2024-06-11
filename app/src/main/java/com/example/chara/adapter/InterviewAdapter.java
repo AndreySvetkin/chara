@@ -49,7 +49,6 @@ public class InterviewAdapter extends RecyclerView.Adapter<InterviewAdapter.Inte
         public InterviewViewHolder(View itemView, OnInterviewClickListener onInterviewClickListener) {
             super(itemView);
             candidateName = itemView.findViewById(R.id.candidate_name);
-            position = itemView.findViewById(R.id.position);
             interviewDateTime = itemView.findViewById(R.id.interview_date_time);
             this.onInterviewClickListener = onInterviewClickListener;
             itemView.setOnClickListener(this);

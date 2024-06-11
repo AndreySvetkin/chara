@@ -86,7 +86,7 @@ public class EmployeeInfoActivity extends AppCompatActivity {
             postTextView.setText("Должность: Нет данных");
         }
         if (employee.getPassport() != null) {
-            passportsTextView.setText("Паспорт: " + employee.getPassport());
+            passportsTextView.setText("Паспорт: " + employee.getPassport().getSerial() + " " + employee.getPassport().getNumber());
         } else {
             passportsTextView.setText("Паспорт: Нет данных");
         }

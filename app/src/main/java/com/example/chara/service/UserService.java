@@ -49,4 +49,10 @@ public interface UserService {
     }
     @POST("entities/sec$User")
     Call<Profile> createUser(@Header("Authorization") String auth, @Body Profile profile, @Query("responseView") String responseView);
+
+    default Call<List<Profile>> allUsers() {
+        return allUsers(" Bearer " + UserServiceHelper.ACCESS_TOKEN, "user-view");
+    }
+    @GET("entities/sec$User")
+    Call<List<Profile>> allUsers(@Header("Authorization") String auth, @Query("view") String view);
 }
